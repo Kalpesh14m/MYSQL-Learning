@@ -133,11 +133,33 @@ CREATE DATABASE [IF NOT EXISTS] database_name
 
 **Third,** specify the character set and collation for the new database at creation time. If you omit the **CHARACTER SET** and **COLLATE clauses**, MySQL uses the _default character set and collation for the new database_.
 
+#### Example CREATE DATABASE command with the database e.g., testdb and press Enter:
 
-### List all databases
-`show databases;`
+```mysql> CREATE DATABASE testdb;
+Query OK, 1 row affected (0.12 sec)
+```
 
-### Select database
-`use TestMe;`
+After that, if you want to review the created database, you can use the SHOW CREATE DATABASE command:
 
+`mysql> SHOW CREATE DATABASE testdb;`
+
+![](https://user-images.githubusercontent.com/25608527/97272800-6bd14e80-1858-11eb-9d40-10411da9d43a.jpg)
+
+MySQL returns the database name and the character set and collation of the database.
+
+
+#### Finally, to access the newly created database, you use the USE database command as follows:
+
+```
+mysql> USE testdb;
+Database changed
+```
+Now, you can start creating tables and other databases objects within the  testdb database.
+
+#### To quit the mysql program, type exit command:
+
+```
+mysql> exit
+Bye
+```
 

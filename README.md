@@ -119,9 +119,20 @@ Basically, those statements switch the current database to classicmodels and que
 
 
 
-### Create new database TestMe
+### MySQL CREATE DATABASE: 
+MySQL implements a database as a directory that contains all files which correspond to tables in the database.
+To create a new database in MySQL, you use the CREATE DATABASE statement with the following syntax:
+```
+CREATE DATABASE [IF NOT EXISTS] database_name
+[CHARACTER SET charset_name]
+[COLLATE collation_name]
+```
+**First,** specify the database_name following the **CREATE DATABASE** clause. The **database name must be unique** within the MySQL server instance. If you try to create a database with a name that already exists, _MySQL issues an error_.
 
-`create database TestMe;`
+**Second,** to avoid an error in case you accidentally create a database that __already exists__, you can specify the **IF NOT EXISTS** option. In this case, _MySQL does not issue an error_ but **terminates the CREATE DATABASE statement** instead.
+
+**Third,** specify the character set and collation for the new database at creation time. If you omit the **CHARACTER SET** and **COLLATE clauses**, MySQL uses the _default character set and collation for the new database_.
+
 
 ### List all databases
 `show databases;`

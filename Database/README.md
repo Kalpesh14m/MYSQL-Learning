@@ -1,122 +1,60 @@
-# MYSQL-Learning
+# Operation With Database
 
-## Database: A database is merely a structured collection of data.
-The data relating to each other by nature. Therefore, we use the term relational database.
-A table contains columns and rows. It is like a spreadsheet.
-A table may relate to another table using a relationship, e.g., one-to-one and one-to-many relationships.
+### Selecting a MySQL Database Using USE Statement
 
-## SQL(structured query language) – the language of the relational database
-SQL is the standardized language used to access the database. ANSI/SQL defines the SQL standard.
-SQL contains three parts:
-  **Data definition language** includes statements that help you define the database and its objects, e.g., tables, views, triggers, stored procedures, etc.
-  **Data manipulation language** contains statements that allow you to update and query data.
-  **Data control language** allows you to grant the permissions to a user to access specific data in the database.
+To select a particular database to work with you issue the USE statement as follows:
 
-## What is MySQL
-### MySQL? What?
-My is the daughter’s name of the MySQL’s co-founder, **Monty Widenius**. The name of MySQL is the combination of My and SQL, MySQL.
+`USE database_name;`
 
-MySQL is a database management system that allows you to manage relational databases. It is open source software backed by Oracle. It means you can use MySQL without paying a dime. Also, if you want, you can change its source code to suit your needs. Even though MySQL is open source software, you can buy a commercial license version from Oracle to get premium support services. MySQL is pretty easy to master in comparison with other database software like Oracle Database, or Microsoft SQL Server.
+In this statement, following the USE keyword is the name of the database that you want to select.
 
-The official way to pronounce MySQL is ***My Ess Que Ell***, not **My Sequel**. However, you can pronounce it whatever you like, who cares?
-
-## Installation Of MySQL (Need to Work...)
-
-
-
-### Connect to MySQL server(In Ubuntu | Need to work with MySQL Workbench)
-To connect to the MySQL Server, use this command:
-
-`sudo mysql -u root -p`
-
-It will prompt for the password of the root account. You enter the password and press Enter, the following command will show if the password is valid:
-
-`mysql>`
-
-Use the SHOW DATABASES to display all databases in the current server:
-
-`mysql> show databases;`
-
-Here is the output:
+#### USE command to select a database, for example classicmodels:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.05 sec)
+mysql> use classicmodels;
+Database changed
 ```
 
+In this command, we selected the classsicmodels database. If the database exists, MySQL issued the message _“Database changed“_.
 
-### MySQL Sample Database
-We use the classicmodels database as a MySQL sample database to help you work with MySQL quickly and effectively. The classicmodels database is a retailer of scale models of classic cars database. It contains typical business data such as customers, products, sales orders, sales order line items, etc.
-Download MySQL Sample Database
-
-### You can download the MySQL sample database via the following link:
-### ![classicmodelsDB](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
-The download file is in ZIP format so you need a zip program to unzip it. You can download a free zip program at www.7-zip.org.
-After uncompressing the  sampledatabase.zip file, you can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
-
-#### How to Load the Sample Database into MySQL Server
-
-**Step 1:** Download the ![classicmodels database](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip).
-**Step 2:** Unzip the downloaded file into a temporary folder. You can use any folder you want. To make it simple, we will unzip the file to the C:\temp  folder.
-***Note:*** If you use another operating system such as macOS, Linux, or Unix, please feel free to unzip it to any directory you like.
-**Step 3:** Connect to the MySQL server using the mysql client program. The mysql program is located in the bin directory of the MySQL installation folder.
-
-`> mysql -u root -p`
-`Enter password: ********`
-
-You will need to enter the password for the root user account to log in.
-
-**Step 4:** Use the source command to load data into the MySQL Server:
-
-`mysql> source c:\temp\mysqlsampledatabase.sql`
-
-**Step 5:** Use the SHOW DATABASES command to list all databases in the current server:
-
-`mysql> show databases;`
-
-The output will look like the following that includes the newly created classicmodels database:
+#### In case the _database does not exist_, MySQL issued the following error:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| classicmodels      |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
+mysql> use abc;
+ERROR 1049 (42000): Unknown database 'abc'
 ```
 
-### To test classicmodelsDB 
+#### You can get the name of the currently connected database by using the database() function:
+```
+mysql> select database();
++---------------+
+| database()    |
++---------------+
+| classicmodels |
++---------------+
+1 row in set (0.00 sec)    
+```
+#### Finally, to select another database, you just need to issue the USE statement and the new database name, for example:
+````
+mysql> use tempdb;
+Database changed
+````
 
-`USE classicmodels;`
-`SELECT * FROM customers;`
+### Selecting a database when you login
+If you know which database you want to work with before you log in, you can use the -D flag to specify it as follows:
 
-Basically, those statements switch the current database to classicmodels and query data from the customers table. If you see the customer data returned, you have successfully imported the sample database into the MySQL database server.
+`MYSQL>mysql -u root -D classicmodels -p`
 
+In this command, we specified the database name classicmodels following the -D flag. Because we used -p flag, MySQL prompted for the password of the root user. You just need to provide the password and press Enter to log in.
 
-### MySQL Sample Database Schema
-
-#### The MySQL sample database schema consists of the following tables:
-
-- **Customers:** stores customer’s data.
-- **Products:** stores a list of scale model cars.
-- **ProductLines:** stores a list of product line categories.
-- **Orders:** stores sales orders placed by customers.
-- **OrderDetails:** stores sales order line items for each sales order.
-- **Payments:** stores payments made by customers based on their accounts.
-- **Employees:** stores all employee information as well as the organization structure such as who reports to whom.
-- **Offices:** stores sales office data.
-
-
-![](https://user-images.githubusercontent.com/25608527/97271524-ab973680-1856-11eb-8668-a9c20125a06d.jpg)
-
+#### Once logged in, you can check the current database:
+```
+> select database();
++---------------+
+| database()    |
++---------------+
+| classicmodels |
++---------------+
+1 row in set (0.00 sec)
+```
 
 
 ### MySQL CREATE DATABASE: 
@@ -139,6 +77,24 @@ CREATE DATABASE [IF NOT EXISTS] database_name
 Query OK, 1 row affected (0.12 sec)
 ```
 
+### Use the SHOW DATABASES to display all databases in the current server:
+
+`mysql> show databases;`
+
+Here is the output:
+
+```
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.05 sec)
+```
+
 After that, if you want to review the created database, you can use the SHOW CREATE DATABASE command:
 
 `mysql> SHOW CREATE DATABASE testdb;`
@@ -156,10 +112,100 @@ Database changed
 ```
 Now, you can start creating tables and other databases objects within the  testdb database.
 
-#### To quit the mysql program, type exit command:
+
+
+### MySQL DROP DATABASE
+The DROP DATABASE statement drops all tables in the database and deletes the database permanently. Therefore, you should be very careful when using this statement.
+The following shows the syntax of the DROP DATABASE statement:
+
+`DROP DATABASE [IF EXISTS] database_name;`
+
+In this statement, you specify the _name of the database_ which you want to delete.
+
+If you try to drop a database that does not exist, _MySQL will issue an error_.
+
+To prevent an error from occurring if you delete a database that does not exist, you can use the **IF EXISTS option**. In this case, MySQL terminates the statement without issuing any error.
+
+The DROP DATABASE statement ***returns the number of tables that were deleted***.
+
+In MySQL, the schema is the synonym for the database, therefore, you can use them interchangeably:
+
+`DROP SCHEMA [IF EXISTS] database_name;`
+
+#### DROP DATABASE statement:
 
 ```
-mysql> exit
-Bye
+mysql> DROP DATABASE testdb;
+Query OK, 0 rows affected (0.03 sec)
 ```
 
+MySQL returned zero affected-rows. It means that the testdb database has notable.
+
+
+## Manage Database in MySQL
+
+### Creating Databases
+Before doing anything else with the data, you need to create a database. A database is a container of data. It stores contacts, vendors, customers or any kind of data that you can think of.
+
+In MySQL, a database is a collection of objects that are used to store and manipulate data such as tables, database views, triggers, and stored procedures.
+
+To create a database in MySQL, you use the CREATE DATABASE  statement as follows:
+
+`CREATE DATABASE [IF NOT EXISTS] database_name;`
+
+Let’s examine the CREATE DATABASE  statement in greater detail:
+
+- Followed by the CREATE DATABASE  statement is database name that you want to create. It is recommended that the database name should be as meaningful and descriptive as possible.
+- The IF NOT EXISTS  is an optional clause of the statement. The IF NOT EXISTS clause prevents you from an error of creating a new database that already exists in the database server. You cannot have 2 databases with the same name in a MySQL database server.
+
+For example, to create classicmodels database, you can execute the CREATE DATABASE  statement as follows:
+
+`CREATE DATABASE classicmodels;`
+
+After executing this statement, MySQL returns a message to notify whether the new database has been created successfully or not.
+
+
+### Displaying Databases
+The SHOW DATABASES statement lists all databases in the MySQL database server. You can use the SHOW DATABASES statement to check the database that you’ve created or to see all the databases on the database server before you create a new database, for example:
+
+`SHOW DATABASES;`
+
+![](https://user-images.githubusercontent.com/25608527/97274773-1ea2ac00-185b-11eb-9c26-e7caabfd6c70.jpg)
+
+As clearly shown in the output, we have three databases in the MySQL database server. The information_schema  and mysql are the default databases that are available when we install MySQL, and the classicmodels is the new database that we have created.
+
+
+### Selecting a database to work with
+Before working with a particular database, you must tell MySQL which database you want to work with by using the USE  statement.
+
+`USE database_name;`
+
+You can select the classicmodels  sample database using the USE statement as follows:
+
+`USE classicmodels;`
+
+From now, all operations such as querying data, create new tables or calling stored procedures which you perform, will take effects on the current database i.e., classicmodels .
+
+
+### Removing Databases
+Removing database means deleting all the tables contained in the database and the database itself permanently. Therefore, it is very important to execute this query with extra cautions.
+
+To delete a database, you use the DROP DATABASE statement as follows:
+
+`DROP DATABASE [IF EXISTS] database_name;`
+
+Following the DROP DATABASE  clause is the database name that you want to delete. Similar to the CREATE DATABASE  statement, the IF EXISTS  is an optional part of the statement to prevent you from removing a database that does not exist in the database server.
+
+If you want to practice with the DROP DATABASE  statement, you can create a new database, make sure that it is created, and remove it.
+
+Let’s look at the following queries:
+```
+CREATE DATABASE IF NOT EXISTS tempdb;
+SHOW DATABASES;
+DROP DATABASE IF EXISTS temp_database;
+```
+The sequence of three statements is as follows:
+
+- **First,** we created a database named tempdb using the CREATE DATABASE statement.
+- **Second,** we displayed all databases using the SHOW DATABASES statement.
+- **Third,** we removed the tempdb using the DROP DATABASE statement.

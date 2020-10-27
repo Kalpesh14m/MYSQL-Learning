@@ -113,6 +113,8 @@ Basically, those statements switch the current database to classicmodels and que
 - **Payments:** stores payments made by customers based on their accounts.
 - **Employees:** stores all employee information as well as the organization structure such as who reports to whom.
 - **Offices:** stores sales office data.
+
+
 ![](https://user-images.githubusercontent.com/25608527/97271524-ab973680-1856-11eb-8668-a9c20125a06d.jpg)
 
 

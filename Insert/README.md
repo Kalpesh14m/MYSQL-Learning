@@ -170,6 +170,7 @@ The table tasks has the following data:
 
 ![](https://user-images.githubusercontent.com/25608527/97345049-9c90a280-18af-11eb-969e-719083ecc0de.png)
 
+---
 
 ### MySQL INSERT multiple rows limit
 In theory, you can insert any number of rows using a single INSERT statement. However, when MySQL server receives the INSERT statement whose size is bigger than max_allowed_packet, it will issue a packet too large error and terminates the connection.
@@ -335,6 +336,9 @@ Here is the output:
 
 ![](https://user-images.githubusercontent.com/25608527/97347266-8c2df700-18b2-11eb-9efd-6c388699b805.png)
 
+
+---
+---
 
 ## MySQL INSERT ON DUPLICATE KEY UPDATE
 The INSERT ON DUPLICATE KEY UPDATE is a MySQL’s extension to the SQL standard’s INSERT statement.

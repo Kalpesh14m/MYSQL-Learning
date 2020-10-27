@@ -12,7 +12,7 @@ Let’s look at each part of the statement.
 - **Then,** you have the **FROM keyword**, space and the name of the table.
 - **Finally,** you have a **semicolon ; at the end** of the statement.
 
-The semicolon ; is the ![statement delimiter](). It specifies the end of a statement. If you have two or more statements, you use the semicolon ; to separate them so that MySQL will execute each statement individually.
+The semicolon ; is the ![statement delimiter](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Delimiter/README.md). It specifies the end of a statement. If you have two or more statements, you use the semicolon ; to separate them so that MySQL will execute each statement individually.
 
 In the SELECT statement, the SELECT and FROM are keywords and written in capital letters. Basically, ___it is just about formatting___. The uppercase letters make the keywords stand out.
 

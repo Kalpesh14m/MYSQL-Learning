@@ -131,9 +131,9 @@ Bye
 
 | Content | URL |
 | :---: | :---: |
-| **Database** | ![Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Database/README.md) |
-| **Select** | ![Select command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Select/README.md) |
-| **Insert** | ![Insert command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Insert/README.md) |
-| **Update** | ![Update command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Update/README.md) |
-| **Delete** | ![Delete command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Delete/README.md) |
+| **Database** | [Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Database/README.md) |
+| **Select** | [Select command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Select/README.md) |
+| **Insert** | [Insert command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Insert/README.md) |
+| **Update** | [Update command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Update/README.md) |
+| **Delete** | [Delete command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Delete/README.md) |
 

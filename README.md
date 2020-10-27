@@ -128,3 +128,9 @@ Bye
 
 # Table of content:
 ![Work with Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Database/README.md)
+
+
+| Attempt | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11 | #12 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Seconds | 301 | 283 | 290 | 286 | 289 | 285 | 287 | 287 | 272 | 276 | 269 | 254 |
+

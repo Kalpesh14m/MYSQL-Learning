@@ -7,7 +7,6 @@ SELECT select_list
 FROM table_name;
 ```
 Let’s look at each part of the statement.
-
 - **First,** you start with the **SELECT keyword**. The keyword has a special meaning in MySQL. In this case, SELECT instructs MySQL to retrieve data.
 - **Next,** you have space and then a **list of columns or expressions** that you want to show in the result.
 - **Then,** you have the **FROM keyword**, space and the name of the table.
@@ -25,7 +24,8 @@ When evaluating the SELECT statement, MySQL evaluates the FROM clause first and 
 
 ![](https://user-images.githubusercontent.com/25608527/97294695-5833e100-1874-11eb-9653-5b3073f0b6d0.png)
 
-#### MySQL SELECT statement examples
+
+### MySQL SELECT statement examples
 
 We will use the table employees in the sample database to demonstrate how to use the SELECT statement:
 
@@ -34,6 +34,7 @@ We will use the table employees in the sample database to demonstrate how to use
 The table employees has eight columns: employee number, last name, first name, extension, email, office code, reports to, and job title. It also has many rows as shown in the following picture:
 
 ![](https://user-images.githubusercontent.com/25608527/97294870-903b2400-1874-11eb-8922-27e899b41c84.png)
+
 
 #### A) Using the MySQL SELECT statement to retrieve data from a single column example
 The following example uses the SELECT statement to select the last names of all employees:
@@ -46,6 +47,7 @@ Here is the partial output:
 ![](https://user-images.githubusercontent.com/25608527/97295016-cb3d5780-1874-11eb-8798-e1e444e07083.png)
 
 The output of a SELECT statement is called results or a result set as it’s a set of data that results from a query.
+
 
 #### B) Using the MySQL SELECT statement to query data from multiple columns example
 The following example uses the SELECT statement to get the first name, last name, and job title of employees:
@@ -64,3 +66,25 @@ Even though the employees table has many columns, the SELECT statement just retu
 The following picture shows the result set:
 
 ![ff](https://user-images.githubusercontent.com/25608527/97295144-ef009d80-1874-11eb-870c-ac6838ba6e8b.png)
+
+
+
+#### C) Using the MySQL SELECT statement to retrieve data from all columns example
+If you want to retrieve data from all the columns of the employees table, you can specify all the column names in the SELECT clause.
+
+Or you just use the **asterisk (*) shorthand** as shown in the following query:
+```
+SELECT * 
+FROM employees;
+```
+The query returns data from all columns of the the employees table.
+
+***Notes about SELECT star*** The SELECT * is often called “select star” or “select all” since you select all data from a table.
+
+It is a good practice to use the SELECT * for the ad-hoc queries only. If you embed the SELECT statement in the code such as PHP, Java, Python, Node.js, you should explicitly specify the name of columns from which you want to get data because of the following reasons:
+
+The SELECT * returns data from the columns that you may not use. It produces unnecessary I/O disk and network traffic between the MySQL database server and application.
+
+When you explicitly specify the column names, the result set is predictable and easier to manage. However, if you use the SELECT * and someone changes the table by adding more columns, you will end up with a result set that is different from the one that you expected.
+
+Using the SELECT * may expose sensitive information to unauthorized users.

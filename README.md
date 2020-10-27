@@ -116,3 +116,11 @@ Basically, those statements switch the current database to classicmodels and que
 
 
 ![](https://user-images.githubusercontent.com/25608527/97271524-ab973680-1856-11eb-8668-a9c20125a06d.jpg)
+
+
+### To quit the mysql program, type exit command:
+
+```
+mysql> exit
+Bye
+```

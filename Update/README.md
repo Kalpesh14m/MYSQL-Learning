@@ -1,165 +1,181 @@
-# MYSQL-Learning
+# MySQL UPDATE
+The UPDATE statement updates data in a table. It allows you to change the values in one or more columns of a single row or multiple rows.
 
-## Database: A database is merely a structured collection of data.
-The data relating to each other by nature. Therefore, we use the term relational database.
-A table contains columns and rows. It is like a spreadsheet.
-A table may relate to another table using a relationship, e.g., one-to-one and one-to-many relationships.
-
-## SQL(structured query language) – the language of the relational database
-SQL is the standardized language used to access the database. ANSI/SQL defines the SQL standard.
-SQL contains three parts:
-  **Data definition language** includes statements that help you define the database and its objects, e.g., tables, views, triggers, stored procedures, etc.
-  **Data manipulation language** contains statements that allow you to update and query data.
-  **Data control language** allows you to grant the permissions to a user to access specific data in the database.
-
-## What is MySQL
-### MySQL? What?
-My is the daughter’s name of the MySQL’s co-founder, **Monty Widenius**. The name of MySQL is the combination of My and SQL, MySQL.
-
-MySQL is a database management system that allows you to manage relational databases. It is open source software backed by Oracle. It means you can use MySQL without paying a dime. Also, if you want, you can change its source code to suit your needs. Even though MySQL is open source software, you can buy a commercial license version from Oracle to get premium support services. MySQL is pretty easy to master in comparison with other database software like Oracle Database, or Microsoft SQL Server.
-
-The official way to pronounce MySQL is ***My Ess Que Ell***, not **My Sequel**. However, you can pronounce it whatever you like, who cares?
-
-## Installation Of MySQL (Need to Work...)
-
-
-
-### Connect to MySQL server(In Ubuntu | Need to work with MySQL Workbench)
-To connect to the MySQL Server, use this command:
-
-`sudo mysql -u root -p`
-
-It will prompt for the password of the root account. You enter the password and press Enter, the following command will show if the password is valid:
-
-`mysql>`
-
-Use the SHOW DATABASES to display all databases in the current server:
-
-`mysql> show databases;`
-
-Here is the output:
+The following illustrates the basic syntax of the UPDATE statement:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.05 sec)
+UPDATE [LOW_PRIORITY] [IGNORE] table_name 
+SET 
+    column_name1 = expr1,
+    column_name2 = expr2,
+    ...
+[WHERE
+    condition];
 ```
+In this syntax:
+
+- **First,** specify the name of the table that you want to update data after the UPDATE keyword.
+- **Second,** specify which column you want to update and the new value in the SET clause. To update values in multiple columns, you use a list of comma-separated assignments by supplying a value in each column’s assignment in the form of a literal value, an expression, or a subquery.
+- **Third,** specify which rows to be updated using a condition in the WHERE clause. The WHERE clause is optional. If you omit it, the UPDATE statement will modify all rows in the table.
+
+**Notice that** the WHERE clause is so important that you should not forget. Sometimes, you may want to update just one row; However, you may forget the WHERE clause and accidentally update all rows of the table.
+
+### MySQL supports two modifiers in the UPDATE statement.
+    The LOW_PRIORITY modifier instructs the UPDATE statement to delay the update until there is no connection reading data from the table. The LOW_PRIORITY takes effect for the storage engines that use table-level locking only such as MyISAM, MERGE, and MEMORY.
+    The IGNORE modifier enables the UPDATE statement to continue updating rows even if errors occurred. The rows that cause errors such as duplicate-key conflicts are not updated.
+
+MySQL UPDATE examples
+
+Let’s practice the UPDATE statement.
+
+---
+
+#### 1) Using MySQL UPDATE to modify values in a single column example
+
+See the following employees table from the sample database.
+
+![](https://user-images.githubusercontent.com/25608527/97360405-2cd8e280-18c4-11eb-9f96-0376d0556223.png)
 
 
-### MySQL Sample Database
-We use the classicmodels database as a MySQL sample database to help you work with MySQL quickly and effectively. The classicmodels database is a retailer of scale models of classic cars database. It contains typical business data such as customers, products, sales orders, sales order line items, etc.
-Download MySQL Sample Database
+In this example, we will update the email of Mary Patterson to the new email mary.patterso@classicmodelcars.com.
 
-### You can download the MySQL sample database via the following link:
-### ![classicmodelsDB](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
-The download file is in ZIP format so you need a zip program to unzip it. You can download a free zip program at www.7-zip.org.
-After uncompressing the  sampledatabase.zip file, you can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
-
-#### How to Load the Sample Database into MySQL Server
-
-**Step 1:** Download the ![classicmodels database](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip).
-**Step 2:** Unzip the downloaded file into a temporary folder. You can use any folder you want. To make it simple, we will unzip the file to the C:\temp  folder.
-***Note:*** If you use another operating system such as macOS, Linux, or Unix, please feel free to unzip it to any directory you like.
-**Step 3:** Connect to the MySQL server using the mysql client program. The mysql program is located in the bin directory of the MySQL installation folder.
-
-`> mysql -u root -p`
-`Enter password: ********`
-
-You will need to enter the password for the root user account to log in.
-
-**Step 4:** Use the source command to load data into the MySQL Server:
-
-`mysql> source c:\temp\mysqlsampledatabase.sql`
-
-**Step 5:** Use the SHOW DATABASES command to list all databases in the current server:
-
-`mysql> show databases;`
-
-The output will look like the following that includes the newly created classicmodels database:
+##### **First,** find Mary’s email from the employees table using the following SELECT statement:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| classicmodels      |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
+SELECT 
+    firstname, 
+    lastname, 
+    email
+FROM
+    employees
+WHERE
+    employeeNumber = 1056;
 ```
-
-### To test classicmodelsDB 
-
-`USE classicmodels;`
-`SELECT * FROM customers;`
-
-Basically, those statements switch the current database to classicmodels and query data from the customers table. If you see the customer data returned, you have successfully imported the sample database into the MySQL database server.
+![](https://user-images.githubusercontent.com/25608527/97360406-2e0a0f80-18c4-11eb-8d73-0cd12df5d557.png)
 
 
-### MySQL Sample Database Schema
-
-#### The MySQL sample database schema consists of the following tables:
-
-- **Customers:** stores customer’s data.
-- **Products:** stores a list of scale model cars.
-- **ProductLines:** stores a list of product line categories.
-- **Orders:** stores sales orders placed by customers.
-- **OrderDetails:** stores sales order line items for each sales order.
-- **Payments:** stores payments made by customers based on their accounts.
-- **Employees:** stores all employee information as well as the organization structure such as who reports to whom.
-- **Offices:** stores sales office data.
-
-
-![](https://user-images.githubusercontent.com/25608527/97271524-ab973680-1856-11eb-8668-a9c20125a06d.jpg)
-
-
-
-### MySQL CREATE DATABASE: 
-MySQL implements a database as a directory that contains all files which correspond to tables in the database.
-To create a new database in MySQL, you use the CREATE DATABASE statement with the following syntax:
+##### **Second,** update the email address of Mary to the new email mary.patterson@classicmodelcars.com :
 ```
-CREATE DATABASE [IF NOT EXISTS] database_name
-[CHARACTER SET charset_name]
-[COLLATE collation_name]
+UPDATE employees 
+SET 
+    email = 'mary.patterson@classicmodelcars.com'
+WHERE
+    employeeNumber = 1056;
 ```
-**First,** specify the database_name following the **CREATE DATABASE** clause. The **database name must be unique** within the MySQL server instance. If you try to create a database with a name that already exists, _MySQL issues an error_.
+MySQL issued the number of rows affected:
 
-**Second,** to avoid an error in case you accidentally create a database that __already exists__, you can specify the **IF NOT EXISTS** option. In this case, _MySQL does not issue an error_ but **terminates the CREATE DATABASE statement** instead.
+`1 row(s) affected`
 
-**Third,** specify the character set and collation for the new database at creation time. If you omit the **CHARACTER SET** and **COLLATE clauses**, MySQL uses the _default character set and collation for the new database_.
+In this UPDATE statement:
 
-#### Example CREATE DATABASE command with the database e.g., testdb and press Enter:
+The WHERE clause specifies the row with employee number 1056 will be updated.
+The SET clause sets the value of the email column to the new email.
 
-```mysql> CREATE DATABASE testdb;
-Query OK, 1 row affected (0.12 sec)
+
+##### **Third,**  execute the SELECT statement again to verify the change:
+```
+SELECT 
+    firstname, 
+    lastname, 
+    email
+FROM
+    employees
+WHERE
+    employeeNumber = 1056;
+```    
+  
+![](https://user-images.githubusercontent.com/25608527/97360407-2ea2a600-18c4-11eb-80ec-2e70d5ca67c4.png)
+
+---
+
+#### 2) Using MySQL UPDATE to modify values in multiple columns
+To update values in the multiple columns, you need to specify the assignments in the SET clause. For example, the following statement updates both last name and email columns of employee number 1056:
+```
+UPDATE employees 
+SET 
+    lastname = 'Hill',
+    email = 'mary.hill@classicmodelcars.com'
+WHERE
+    employeeNumber = 1056;
+```
+Let’s verify the changes:
+```
+SELECT 
+    firstname, 
+    lastname, 
+    email
+FROM
+    employees
+WHERE
+    employeeNumber = 1056;
+```
+![](https://user-images.githubusercontent.com/25608527/97360414-306c6980-18c4-11eb-8196-3480bd14b442.png)
+      
+---
+
+#### 3) Using MySQL UPDATE to replace string example
+The following example updates the domain parts of emails of all Sales Reps with office code 6:
+```
+UPDATE employees
+SET email = REPLACE(email,'@classicmodelcars.com','@mysqltutorial.org')
+WHERE
+   jobTitle = 'Sales Rep' AND
+   officeCode = 6;
 ```
 
-After that, if you want to review the created database, you can use the SHOW CREATE DATABASE command:
+In this example, the REPLACE() function replaces @classicmodelcars.com in the email column with @mysqltutorial.org.
 
-`mysql> SHOW CREATE DATABASE testdb;`
+---
 
-![](https://user-images.githubusercontent.com/25608527/97272800-6bd14e80-1858-11eb-9d40-10411da9d43a.jpg)
+#### 4) Using MySQL UPDATE to update rows returned by a SELECT statement example
+You can supply the values for the SET clause from a SELECT statement that queries data from other tables.
 
-MySQL returns the database name and the character set and collation of the database.
-
-
-#### Finally, to access the newly created database, you use the USE database command as follows:
-
+For example, in the customers table, some customers do not have any sale representative. The value of the column saleRepEmployeeNumber is NULL as follows:
 ```
-mysql> USE testdb;
-Database changed
+SELECT 
+    customername, 
+    salesRepEmployeeNumber
+FROM
+    customers
+WHERE
+    salesRepEmployeeNumber IS NULL;
 ```
-Now, you can start creating tables and other databases objects within the  testdb database.
+![](https://user-images.githubusercontent.com/25608527/97360418-31050000-18c4-11eb-8861-fcfbae51b553.png)
+  
+We can take a sale representative and update for those customers.
 
-#### To quit the mysql program, type exit command:
+To do this, we can select a random employee whose job title is Sales Rep from the  employees table and update it for the  employees table.
 
+This query selects a random employee from the table employees whose job title is the Sales Rep.
 ```
-mysql> exit
-Bye
+SELECT 
+    employeeNumber
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep'
+ORDER BY RAND()
+LIMIT 1;
 ```
-
+To update the sales representative employee number  column in the customers table, we place the query above in the SET clause of the UPDATE statement as follows:
+```
+UPDATE customers 
+SET 
+    salesRepEmployeeNumber = (SELECT 
+            employeeNumber
+        FROM
+            employees
+        WHERE
+            jobtitle = 'Sales Rep'
+        ORDER BY RAND()
+        LIMIT 1)
+WHERE
+    salesRepEmployeeNumber IS NULL;
+```
+If you query data from the  employees table, you will see that every customer has a sales representative. In other words, the following query returns no row.
+```
+SELECT 
+     salesRepEmployeeNumber
+FROM
+    customers
+WHERE
+    salesRepEmployeeNumber IS NULL;
+```

@@ -326,3 +326,101 @@ VALUES(
 Here is the output:
 
 ![](https://user-images.githubusercontent.com/25608527/97347266-8c2df700-18b2-11eb-9efd-6c388699b805.png)
+
+
+## MySQL INSERT ON DUPLICATE KEY UPDATE
+The INSERT ON DUPLICATE KEY UPDATE is a MySQL’s extension to the SQL standard’s INSERT statement.
+
+When you insert a new row into a table if the row causes a duplicate in UNIQUE index or PRIMARY KEY , MySQL will issue an error.
+
+However, if you specify the ON **DUPLICATE KEY UPDATE** option in the INSERT statement, MySQL will update the existing row with the new values instead.
+
+The syntax of INSERT ON DUPLICATE KEY UPDATE statement is as follows:
+```
+INSERT INTO table (column_list)
+VALUES (value_list)
+ON DUPLICATE KEY UPDATE
+   c1 = v1, 
+   c2 = v2,
+   ...;
+```
+The only addition to the INSERT statement is the ON DUPLICATE KEY UPDATE clause where you specify a list of column-value-pair assignments in case of duplicate.
+
+Basically, the statement first tries to insert a new row into the table. If a duplicate error occurs, it will update the existing row with the value specified in the ON DUPLICATE KEY UPDATE clause.
+
+MySQL returns the number of affected-rows based on the action it performs:
+```
+If the new row is inserted, the number of affected-rows is 1.
+If the existing row is updated, the number of affected-rows is 2.
+If the existing row is updated using its current values, the number of affected-rows is 0.
+```
+To use the values from the INSERT clause in the DUPLICATE KEY UPDATE clause, you use the VALUES() function as follows:
+```
+INSERT INTO table_name(c1)
+VALUES(c1)
+ON DUPLICATE KEY UPDATE c1 = VALUES(c1) + 1;
+```
+The statement above sets the value of the c1 to its current value specified by the expression VALUES(c1) plus 1 if there is a duplicate in UNIQUE index or PRIMARY KEY.
+
+MySQL INSERT ON DUPLICATE KEY UPDATE example
+
+Let’s take a look at an example of using the INSERT ON DUPLICATE KEY UPDATE to understand how it works.
+
+First, create a table named devices to store the network devices.
+```
+CREATE TABLE devices (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100)
+);
+```
+Next, insert rows into the devices table.
+```
+INSERT INTO devices(name)
+VALUES('Router F1'),('Switch 1'),('Switch 2');
+```
+Then, query the data from the devices table to verify the insert:
+```
+SELECT 
+    id, 
+    name
+FROM	
+    devices;
+```
+Here is the output:
+
+![](https://user-images.githubusercontent.com/25608527/97348159-c9df4f80-18b3-11eb-931a-db5e6957a027.png)
+
+Now, we have three rows in the devices table.
+
+After that, insert one more row into the devices table.
+```
+INSERT INTO 
+   devices(name) 
+VALUES 
+   ('Printer') 
+ON DUPLICATE KEY UPDATE name = 'Printer';
+```
+Here is the output:
+
+![](https://user-images.githubusercontent.com/25608527/97348166-ccda4000-18b3-11eb-9335-b2db0ebb029c.png)
+
+Because there is no duplicate, MySQL inserts a new row into the devices table. The statement above has the same effect as the following statement:
+```
+INSERT INTO devices(name) 
+VALUES ('Printer');
+```
+Finally, insert a row with a duplicate value in the id column.
+```
+INSERT INTO devices(id,name) 
+VALUES 
+   (4,'Printer') 
+ON DUPLICATE KEY UPDATE name = 'Central Printer';
+```
+MySQL issues the following message:
+
+`2 row(s) affected`
+
+Because a row with id 4 already exists in the devices table, the statement updates the name from Printer to Central Printer.
+Here is the output:
+
+![](https://user-images.githubusercontent.com/25608527/97348169-ce0b6d00-18b3-11eb-8a1b-e9bb3711e721.png)

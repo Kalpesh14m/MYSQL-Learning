@@ -39,6 +39,9 @@ CREATE TABLE IF NOT EXISTS tasks (
     PRIMARY KEY (task_id)
 );
 ```
+
+---
+
 ### 1) MySQL INSERT – simple INSERT example
 The following statement inserts a new row into the tasks table:
 ```
@@ -65,7 +68,7 @@ The task_id column is an **AUTO_INCREMENT column**. It means that ***MySQL gener
 
 The start_date, due_date, and description columns use **NULL as the default value**, therefore, MySQL uses NULL to insert into these columns if you don’t specify their values in the INSERT statement.
 
-
+---
 
 ### 2) MySQL INSERT – Inserting rows using default value example
 If you want to insert a default value into a column, you have two ways:
@@ -94,6 +97,7 @@ Here is the output:
 
 ![](https://user-images.githubusercontent.com/25608527/97344868-576c7080-18af-11eb-9fc6-0a1a38fb5cfe.png)
 
+---
 
 ### 3) MySQL INSERT – Inserting dates into the table example
 To insert a literal date value into a column, you use the following format:
@@ -126,7 +130,7 @@ Here are the contents of the tasks table after insert:
 
 ![](https://user-images.githubusercontent.com/25608527/97344957-7c60e380-18af-11eb-929b-03c66dc567bf.png)
 
-
+---
 
 ### 4) MySQL INSERT – Inserting multiple rows example
 The following statement inserts three rows into the tasks table:
@@ -188,7 +192,8 @@ where size is an integer that represents the number the maximum allowed packet s
 
 Note that the _max_allowed_packet_ has no ___influence on the INSERT INTO .. SELECT statement___. The INSERT INTO .. SELECT statement can insert as many rows as you want.
 
-
+---
+---
 
 ## MySQL INSERT INTO SELECT
 We learned how to insert one or more rows into a table using the INSERT statement with a list of column values specified in the VALUES clause.
@@ -293,6 +298,9 @@ It returned the following message indicating that 11 rows have been inserted suc
 Here is the output:
 
 ![](https://user-images.githubusercontent.com/25608527/97347180-6bfe3800-18b2-11eb-8be0-bb35b42b8e3e.png)
+
+---
+---
 
 ## Using SELECT statement in the VALUES list
 

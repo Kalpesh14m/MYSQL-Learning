@@ -57,13 +57,13 @@ We use the classicmodels database as a MySQL sample database to help you work wi
 Download MySQL Sample Database
 
 ### You can download the MySQL sample database via the following link:
-### ![classicmodelsDB](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
+### ![classicmodelsDB](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Content/mysqlsampledatabase.zip)
 The download file is in ZIP format so you need a zip program to unzip it. You can download a free zip program at www.7-zip.org.
 After uncompressing the  sampledatabase.zip file, you can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
 
 #### How to Load the Sample Database into MySQL Server
 
-**Step 1:** Download the ![classicmodels database](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip).
+**Step 1:** Download the ![classicmodels database](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Content/mysqlsampledatabase.zip).
 **Step 2:** Unzip the downloaded file into a temporary folder. You can use any folder you want. To make it simple, we will unzip the file to the C:\temp  folder.
 ***Note:*** If you use another operating system such as macOS, Linux, or Unix, please feel free to unzip it to any directory you like.
 **Step 3:** Connect to the MySQL server using the mysql client program. The mysql program is located in the bin directory of the MySQL installation folder.

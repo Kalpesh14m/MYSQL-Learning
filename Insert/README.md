@@ -1,165 +1,150 @@
-# MYSQL-Learning
+# MySQL Insert
 
-## Database: A database is merely a structured collection of data.
-The data relating to each other by nature. Therefore, we use the term relational database.
-A table contains columns and rows. It is like a spreadsheet.
-A table may relate to another table using a relationship, e.g., one-to-one and one-to-many relationships.
+### MySQL INSERT statement
+The INSERT statement allows you to insert one or more rows into a table. The following illustrates the syntax of the INSERT statement:
+```
+INSERT INTO table(c1,c2,...)
+VALUES (v1,v2,...);
+```
+In this syntax,
 
-## SQL(structured query language) – the language of the relational database
-SQL is the standardized language used to access the database. ANSI/SQL defines the SQL standard.
-SQL contains three parts:
-  **Data definition language** includes statements that help you define the database and its objects, e.g., tables, views, triggers, stored procedures, etc.
-  **Data manipulation language** contains statements that allow you to update and query data.
-  **Data control language** allows you to grant the permissions to a user to access specific data in the database.
+**First,** specify the table name and a list of comma-separated columns inside parentheses after the INSERT INTO clause.
 
-## What is MySQL
-### MySQL? What?
-My is the daughter’s name of the MySQL’s co-founder, **Monty Widenius**. The name of MySQL is the combination of My and SQL, MySQL.
+**Then,** put a comma-separated list of values of the corresponding columns inside the parentheses following the VALUES keyword.
 
-MySQL is a database management system that allows you to manage relational databases. It is open source software backed by Oracle. It means you can use MySQL without paying a dime. Also, if you want, you can change its source code to suit your needs. Even though MySQL is open source software, you can buy a commercial license version from Oracle to get premium support services. MySQL is pretty easy to master in comparison with other database software like Oracle Database, or Microsoft SQL Server.
+The number of columns and values must be the same. In addition, the positions of columns must be corresponding with the positions of their values.
 
-The official way to pronounce MySQL is ***My Ess Que Ell***, not **My Sequel**. However, you can pronounce it whatever you like, who cares?
+To insert multiple rows into a table using a single INSERT statement, you use the following syntax:
+```
+INSERT INTO table(c1,c2,...)
+VALUES 
+   (v11,v12,...),
+   (v21,v22,...),
+    ...
+   (vnn,vn2,...);
+```
+In this syntax, rows are separated by commas in the VALUES clause.
 
-## Installation Of MySQL (Need to Work...)
+**MySQL INSERT examples**
 
+Let’s create a new table named tasks for practicing the INSERT statement.
+```
+CREATE TABLE IF NOT EXISTS tasks (
+    task_id INT AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    start_date DATE,
+    due_date DATE,
+    priority TINYINT NOT NULL DEFAULT 3,
+    description TEXT,
+    PRIMARY KEY (task_id)
+);
+```
+#### 1) MySQL INSERT – simple INSERT example
+The following statement inserts a new row into the tasks table:
+```
+INSERT INTO tasks(title,priority)
+VALUES('Learn MySQL INSERT Statement',1);
+```
+MySQL returns the following message:
 
+`1 row(s) affected`
 
-### Connect to MySQL server(In Ubuntu | Need to work with MySQL Workbench)
-To connect to the MySQL Server, use this command:
+It means that one row has been inserted into the tasks table successfully.
 
-`sudo mysql -u root -p`
+This query returns data from the tasks table:
 
-It will prompt for the password of the root account. You enter the password and press Enter, the following command will show if the password is valid:
-
-`mysql>`
-
-Use the SHOW DATABASES to display all databases in the current server:
-
-`mysql> show databases;`
+`SELECT * FROM tasks;`
 
 Here is the output:
+
+![](https://user-images.githubusercontent.com/25608527/97344812-458acd80-18af-11eb-8948-f446b0196da2.png)
+
+In this example, we specified the values for only title and priority columns. For other columns, MySQL uses the default values.
+
+The task_id column is an **AUTO_INCREMENT column**. It means that ***MySQL generates a sequential integer whenever a row is inserted into the table.***
+
+The start_date, due_date, and description columns use **NULL as the default value**, therefore, MySQL uses NULL to insert into these columns if you don’t specify their values in the INSERT statement.
+
+
+#### 2) MySQL INSERT – Inserting rows using default value example
+If you want to insert a default value into a column, you have two ways:
+
+- Ignore both the column name and value in the INSERT statement.
+- Specify the column name in the INSERT INTO clause and use the DEFAULT keyword in the VALUES clause.
+
+The following example demonstrates the second way:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-4 rows in set (0.05 sec)
+INSERT INTO tasks(title,priority)
+VALUES('Understanding DEFAULT keyword in INSERT statement',DEFAULT);
 ```
+In this example, we specified the priority column and the  **DEFAULT keyword.**
+
+Because the default value for the column priority is 3 as declared in the table definition:
+
+`priority TINYINT NOT NULL DEFAULT 3`
+
+MySQL uses the number 3 to insert into the priority column.
+
+The following statement returns the contents of the tasks table after the insert:
+
+`SELECT * FROM tasks;`
+
+Here is the output:
+
+![](https://user-images.githubusercontent.com/25608527/97344868-576c7080-18af-11eb-9fc6-0a1a38fb5cfe.png)
 
 
-### MySQL Sample Database
-We use the classicmodels database as a MySQL sample database to help you work with MySQL quickly and effectively. The classicmodels database is a retailer of scale models of classic cars database. It contains typical business data such as customers, products, sales orders, sales order line items, etc.
-Download MySQL Sample Database
+#### 3) MySQL INSERT – Inserting dates into the table example
+To insert a literal date value into a column, you use the following format:
 
-### You can download the MySQL sample database via the following link:
-### ![classicmodelsDB](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip)
-The download file is in ZIP format so you need a zip program to unzip it. You can download a free zip program at www.7-zip.org.
-After uncompressing the  sampledatabase.zip file, you can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
+`'YYYY-MM-DD'`
 
-#### How to Load the Sample Database into MySQL Server
+In this format:
 
-**Step 1:** Download the ![classicmodels database](https://sp.mysqltutorial.org/wp-content/uploads/2018/03/mysqlsampledatabase.zip).
-**Step 2:** Unzip the downloaded file into a temporary folder. You can use any folder you want. To make it simple, we will unzip the file to the C:\temp  folder.
-***Note:*** If you use another operating system such as macOS, Linux, or Unix, please feel free to unzip it to any directory you like.
-**Step 3:** Connect to the MySQL server using the mysql client program. The mysql program is located in the bin directory of the MySQL installation folder.
+- `YYYY` represents a four-digit year e.g., 2018.
+- `MM` represents a two-digit month e.g., 01, 02, and 12.
+- `DD` represents a two-digit day e.g., 01, 02, 30.
 
-`> mysql -u root -p`
-`Enter password: ********`
-
-You will need to enter the password for the root user account to log in.
-
-**Step 4:** Use the source command to load data into the MySQL Server:
-
-`mysql> source c:\temp\mysqlsampledatabase.sql`
-
-**Step 5:** Use the SHOW DATABASES command to list all databases in the current server:
-
-`mysql> show databases;`
-
-The output will look like the following that includes the newly created classicmodels database:
+The following statement inserts a new row to the tasks table with the start and due date values:
 ```
-+--------------------+
-| Database           |
-+--------------------+
-| classicmodels      |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
+INSERT INTO tasks(title, start_date, due_date)
+VALUES('Insert date into table','2018-01-09','2018-09-15');
 ```
+The following picture shows the contents of the tasks table after the insert:
 
-### To test classicmodelsDB 
+![](https://user-images.githubusercontent.com/25608527/97344950-7a972000-18af-11eb-8449-c3bf8e6756d8.png)
 
-`USE classicmodels;`
-`SELECT * FROM customers;`
-
-Basically, those statements switch the current database to classicmodels and query data from the customers table. If you see the customer data returned, you have successfully imported the sample database into the MySQL database server.
-
-
-### MySQL Sample Database Schema
-
-#### The MySQL sample database schema consists of the following tables:
-
-- **Customers:** stores customer’s data.
-- **Products:** stores a list of scale model cars.
-- **ProductLines:** stores a list of product line categories.
-- **Orders:** stores sales orders placed by customers.
-- **OrderDetails:** stores sales order line items for each sales order.
-- **Payments:** stores payments made by customers based on their accounts.
-- **Employees:** stores all employee information as well as the organization structure such as who reports to whom.
-- **Offices:** stores sales office data.
-
-
-![](https://user-images.githubusercontent.com/25608527/97271524-ab973680-1856-11eb-8668-a9c20125a06d.jpg)
-
-
-
-### MySQL CREATE DATABASE: 
-MySQL implements a database as a directory that contains all files which correspond to tables in the database.
-To create a new database in MySQL, you use the CREATE DATABASE statement with the following syntax:
+It is possible to use expressions in the VALUES clause. For example, the following statement adds a new task using the current date for start date and due date columns:
 ```
-CREATE DATABASE [IF NOT EXISTS] database_name
-[CHARACTER SET charset_name]
-[COLLATE collation_name]
+INSERT INTO tasks(title,start_date,due_date)
+VALUES('Use current date for the task',CURRENT_DATE(),CURRENT_DATE())
 ```
-**First,** specify the database_name following the **CREATE DATABASE** clause. The **database name must be unique** within the MySQL server instance. If you try to create a database with a name that already exists, _MySQL issues an error_.
+In this example, we used the **CURRENT_DATE() function** as the values for the start_date and due_date columns. Note that the CURRENT_DATE() function is a date function that returns the current system date.
 
-**Second,** to avoid an error in case you accidentally create a database that __already exists__, you can specify the **IF NOT EXISTS** option. In this case, _MySQL does not issue an error_ but **terminates the CREATE DATABASE statement** instead.
+Here are the contents of the tasks table after insert:
 
-**Third,** specify the character set and collation for the new database at creation time. If you omit the **CHARACTER SET** and **COLLATE clauses**, MySQL uses the _default character set and collation for the new database_.
+![](https://user-images.githubusercontent.com/25608527/97344957-7c60e380-18af-11eb-929b-03c66dc567bf.png)
 
-#### Example CREATE DATABASE command with the database e.g., testdb and press Enter:
 
-```mysql> CREATE DATABASE testdb;
-Query OK, 1 row affected (0.12 sec)
+#### 4) MySQL INSERT – Inserting multiple rows example
+The following statement inserts three rows into the tasks table:
 ```
-
-After that, if you want to review the created database, you can use the SHOW CREATE DATABASE command:
-
-`mysql> SHOW CREATE DATABASE testdb;`
-
-![](https://user-images.githubusercontent.com/25608527/97272800-6bd14e80-1858-11eb-9d40-10411da9d43a.jpg)
-
-MySQL returns the database name and the character set and collation of the database.
-
-
-#### Finally, to access the newly created database, you use the USE database command as follows:
-
+INSERT INTO tasks(title, priority)
+VALUES
+	('My first task', 1),
+	('It is the second task',2),
+	('This is the third task of the week',3);
 ```
-mysql> USE testdb;
-Database changed
-```
-Now, you can start creating tables and other databases objects within the  testdb database.
+In this example, each row data is specified as a list of values in the VALUES clause.
 
-#### To quit the mysql program, type exit command:
+MySQL returns the following message:
 
-```
-mysql> exit
-Bye
-```
+`3 row(s) affected Records: 3  Duplicates: 0  Warnings: 0`
 
+It means that the three rows have been inserted successfully with no duplicates or warnings.
+
+`SELECT * FROM tasks;`
+
+The table tasks has the following data:
+
+![](https://user-images.githubusercontent.com/25608527/97345049-9c90a280-18af-11eb-969e-719083ecc0de.png)

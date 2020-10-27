@@ -66,12 +66,13 @@ The task_id column is an **AUTO_INCREMENT column**. It means that ***MySQL gener
 The start_date, due_date, and description columns use **NULL as the default value**, therefore, MySQL uses NULL to insert into these columns if you don’t specify their values in the INSERT statement.
 
 
+
 #### 2) MySQL INSERT – Inserting rows using default value example
 If you want to insert a default value into a column, you have two ways:
 
 - Ignore both the column name and value in the INSERT statement.
 - Specify the column name in the INSERT INTO clause and use the DEFAULT keyword in the VALUES clause.
-
+    
 The following example demonstrates the second way:
 ```
 INSERT INTO tasks(title,priority)
@@ -126,8 +127,25 @@ Here are the contents of the tasks table after insert:
 ![](https://user-images.githubusercontent.com/25608527/97344957-7c60e380-18af-11eb-929b-03c66dc567bf.png)
 
 
+
+
 #### 4) MySQL INSERT – Inserting multiple rows example
 The following statement inserts three rows into the tasks table:
+
+
+To insert multiple rows into a table, you use the following form of the INSERT statement:
+```
+INSERT INTO table_name (column_list)
+VALUES
+	(value_list_1),
+	(value_list_2),
+	...
+	(value_list_n);
+```
+In this syntax:
+- **First,** specify the name of table that you want to insert after the INSERT INTO keywords.
+- **Second,** specify a comma-separated column list inside parentheses after the table name.
+- **Third,** specify a comma-separated list of row data in the VALUES clause. Each element of the list represents a row. The number of values in each element must be the same as the number of columns in the column_list.
 ```
 INSERT INTO tasks(title, priority)
 VALUES
@@ -148,3 +166,26 @@ It means that the three rows have been inserted successfully with no duplicates 
 The table tasks has the following data:
 
 ![](https://user-images.githubusercontent.com/25608527/97345049-9c90a280-18af-11eb-969e-719083ecc0de.png)
+
+
+### MySQL INSERT multiple rows limit
+In theory, you can insert any number of rows using a single INSERT statement. However, when MySQL server receives the INSERT statement whose size is bigger than max_allowed_packet, it will issue a packet too large error and terminates the connection.
+
+This statement shows the current value of the max_allowed_packet variable:
+
+`SHOW VARIABLES LIKE 'max_allowed_packet';`
+
+Here is the output on our MySQL database server. Note that the value in your server may be different.
+
+![](https://user-images.githubusercontent.com/25608527/97346451-77049880-18b1-11eb-9d51-0428a99168ac.png)
+
+The number is the Value column is the number of bytes.
+
+To set a new value for the max_allowed_packet variable, you use the following statement:
+
+`SET GLOBAL max_allowed_packet=size;`
+
+where size is an integer that represents the number the maximum allowed packet size in bytes.
+
+Note that the _max_allowed_packet_ has no ___influence on the INSERT INTO .. SELECT statement___. The INSERT INTO .. SELECT statement can insert as many rows as you want.
+

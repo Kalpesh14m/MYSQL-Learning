@@ -51,6 +51,7 @@ Here is the output:
 ```
 
 
+
 ### MySQL Sample Database
 We use the classicmodels database as a MySQL sample database to help you work with MySQL quickly and effectively. The classicmodels database is a retailer of scale models of classic cars database. It contains typical business data such as customers, products, sales orders, sales order line items, etc.
 Download MySQL Sample Database

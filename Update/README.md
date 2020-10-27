@@ -20,8 +20,8 @@ In this syntax:
 **Notice that** the WHERE clause is so important that you should not forget. Sometimes, you may want to update just one row; However, you may forget the WHERE clause and accidentally update all rows of the table.
 
 ### MySQL supports two modifiers in the UPDATE statement.
-    The LOW_PRIORITY modifier instructs the UPDATE statement to delay the update until there is no connection reading data from the table. The LOW_PRIORITY takes effect for the storage engines that use table-level locking only such as MyISAM, MERGE, and MEMORY.
-    The IGNORE modifier enables the UPDATE statement to continue updating rows even if errors occurred. The rows that cause errors such as duplicate-key conflicts are not updated.
+The **LOW_PRIORITY modifier** instructs the UPDATE statement to delay the update until there is no connection reading data from the table. The LOW_PRIORITY takes effect for the storage engines that use table-level locking only such as MyISAM, MERGE, and MEMORY.
+The **IGNORE modifier** enables the UPDATE statement to continue updating rows even if errors occurred. The rows that cause errors such as duplicate-key conflicts are not updated.
 
 MySQL UPDATE examples
 
@@ -29,7 +29,7 @@ Let’s practice the UPDATE statement.
 
 ---
 
-#### 1) Using MySQL UPDATE to modify values in a single column example
+### 1) Using MySQL UPDATE to modify values in a single column example
 
 See the following employees table from the sample database.
 
@@ -38,7 +38,7 @@ See the following employees table from the sample database.
 
 In this example, we will update the email of Mary Patterson to the new email mary.patterso@classicmodelcars.com.
 
-##### **First,** find Mary’s email from the employees table using the following SELECT statement:
+#### **First,** find Mary’s email from the employees table using the following SELECT statement:
 ```
 SELECT 
     firstname, 
@@ -52,7 +52,7 @@ WHERE
 ![](https://user-images.githubusercontent.com/25608527/97360406-2e0a0f80-18c4-11eb-8d73-0cd12df5d557.png)
 
 
-##### **Second,** update the email address of Mary to the new email mary.patterson@classicmodelcars.com :
+#### **Second,** update the email address of Mary to the new email mary.patterson@classicmodelcars.com :
 ```
 UPDATE employees 
 SET 
@@ -70,7 +70,7 @@ The WHERE clause specifies the row with employee number 1056 will be updated.
 The SET clause sets the value of the email column to the new email.
 
 
-##### **Third,**  execute the SELECT statement again to verify the change:
+#### **Third,**  execute the SELECT statement again to verify the change:
 ```
 SELECT 
     firstname, 
@@ -86,7 +86,7 @@ WHERE
 
 ---
 
-#### 2) Using MySQL UPDATE to modify values in multiple columns
+### 2) Using MySQL UPDATE to modify values in multiple columns
 To update values in the multiple columns, you need to specify the assignments in the SET clause. For example, the following statement updates both last name and email columns of employee number 1056:
 ```
 UPDATE employees 
@@ -111,7 +111,7 @@ WHERE
       
 ---
 
-#### 3) Using MySQL UPDATE to replace string example
+### 3) Using MySQL UPDATE to replace string example
 The following example updates the domain parts of emails of all Sales Reps with office code 6:
 ```
 UPDATE employees
@@ -125,7 +125,7 @@ In this example, the REPLACE() function replaces @classicmodelcars.com in the em
 
 ---
 
-#### 4) Using MySQL UPDATE to update rows returned by a SELECT statement example
+### 4) Using MySQL UPDATE to update rows returned by a SELECT statement example
 You can supply the values for the SET clause from a SELECT statement that queries data from other tables.
 
 For example, in the customers table, some customers do not have any sale representative. The value of the column saleRepEmployeeNumber is NULL as follows:

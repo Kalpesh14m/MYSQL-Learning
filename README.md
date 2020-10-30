@@ -1,5 +1,7 @@
 # MYSQL-Learning
 
+## For more learning Don't Forget to [like, comment, share and subscribe to my YouTube Channel](https://www.youtube.com/channel/UCWnMX1pam6Vncf5hnrbKPzw) and follow me [for more updates on Instagram](https://www.instagram.com/codedictator/)
+
 ## Database: A database is merely a structured collection of data.
 The data relating to each other by nature. Therefore, we use the term relational database.
 A table contains columns and rows. It is like a spreadsheet.
@@ -49,7 +51,6 @@ Here is the output:
 +--------------------+
 4 rows in set (0.05 sec)
 ```
-
 
 
 ### MySQL Sample Database

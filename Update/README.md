@@ -1,5 +1,7 @@
 <a name="update"/>
+
 # MySQL UPDATE
+
 The UPDATE statement updates data in a table. It allows you to change the values in one or more columns of a single row or multiple rows.
 
 The following illustrates the basic syntax of the UPDATE statement:

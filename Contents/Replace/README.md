@@ -9,7 +9,7 @@ The MySQL REPLACE statement is an extension to the SQL Standard. The MySQL REPLA
     - [Delete](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) the conflicting row that causes the duplicate key error from the table.
     - [Insert](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) the new row into the table again.
 
-To determine whether the new row that already exists in the table, MySQL uses [PRIMARY KEY]() or [UNIQUE KEY]() index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
+To determine whether the new row that already exists in the table, MySQL uses [PRIMARY KEY](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Need%20To%20Work/README.md) or [UNIQUE KEY](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Need%20To%20Work/README.md) index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
 
 To use the REPLACE statement, you need to have at least both INSERT and DELETE privileges for the table.
 
@@ -100,7 +100,7 @@ Unlike the UPDATE statement, if you don’t specify the value for the column in 
 
 ---
 
-### Using MySQL REPLACE to insert data from a [SELECT statement](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md)
+### Using MySQL REPLACE to insert data from a [select statement](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md)
 
 The following illustrates the REPLACE statement that inserts data into a table with the data come from a query.
 

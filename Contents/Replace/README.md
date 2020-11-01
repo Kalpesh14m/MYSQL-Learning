@@ -6,8 +6,8 @@ The MySQL REPLACE statement is an extension to the SQL Standard. The MySQL REPLA
 
 **Step 2.** If the insertion fails due to a duplicate-key error occurs:
 
-    - [Delete](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) the conflicting row that causes the duplicate key error from the table.
-    - [Insert](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) the new row into the table again.
+    - Delete the conflicting row that causes the duplicate key error from the table.
+    - Insert the new row into the table again.
 
 To determine whether the new row that already exists in the table, MySQL uses [PRIMARY KEY](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Need%20To%20Work/README.md) or [UNIQUE KEY](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Need%20To%20Work/README.md) index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
 

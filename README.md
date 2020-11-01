@@ -1,6 +1,8 @@
-# MYSQL-Learning
+# MYSQL Learning
 
 ## For more learning Don't Forget to [like, comment, share and subscribe to my YouTube Channel](https://www.youtube.com/channel/UCWnMX1pam6Vncf5hnrbKPzw) and follow me [for more updates on Instagram](https://www.instagram.com/codedictator/)
+
+---
 
 ## Database: A database is merely a structured collection of data.
 The data relating to each other by nature. Therefore, we use the term relational database.
@@ -14,17 +16,19 @@ SQL contains three parts:
   **Data manipulation language** contains statements that allow you to update and query data.
   **Data control language** allows you to grant the permissions to a user to access specific data in the database.
 
-## What is MySQL
-### MySQL? What?
+## MySQL
+
 My is the daughter’s name of the MySQL’s co-founder, **Monty Widenius**. The name of MySQL is the combination of My and SQL, MySQL.
 
 MySQL is a database management system that allows you to manage relational databases. It is open source software backed by Oracle. It means you can use MySQL without paying a dime. Also, if you want, you can change its source code to suit your needs. Even though MySQL is open source software, you can buy a commercial license version from Oracle to get premium support services. MySQL is pretty easy to master in comparison with other database software like Oracle Database, or Microsoft SQL Server.
 
 The official way to pronounce MySQL is ***My Ess Que Ell***, not **My Sequel**. However, you can pronounce it whatever you like, who cares?
 
+---
+
 ## Installation Of MySQL (Need to Work...)
 
-
+---
 
 ### Connect to MySQL server(In Ubuntu | Need to work with MySQL Workbench)
 To connect to the MySQL Server, use this command:
@@ -52,25 +56,29 @@ Here is the output:
 4 rows in set (0.05 sec)
 ```
 
+---
 
 ### MySQL Sample Database
 We use the classicmodels database as a MySQL sample database to help you work with MySQL quickly and effectively. The classicmodels database is a retailer of scale models of classic cars database. It contains typical business data such as customers, products, sales orders, sales order line items, etc.
 Download MySQL Sample Database
 
 ### You can download the MySQL sample database via the following link:
-### ![classicmodelsDB](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Content/mysqlsampledatabase.zip)
-The download file is in ZIP format so you need a zip program to unzip it. You can download a free zip program at www.7-zip.org.
-After uncompressing the  sampledatabase.zip file, you can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
+
+### ![classicmodelsDB](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/DB File/mysqlsampledatabase.zip)
+
+The download file is in ZIP format so you need a zip program to unzip it. You can load the sample database into MySQL database server by following commands and test it by using the following SQL statements:
 
 #### How to Load the Sample Database into MySQL Server
 
-**Step 1:** Download the ![classicmodels database](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Content/mysqlsampledatabase.zip).
+**Step 1:** Download the ![classicmodels database](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/DB File/mysqlsampledatabase.zip).
 **Step 2:** Unzip the downloaded file into a temporary folder. You can use any folder you want. To make it simple, we will unzip the file to the C:\temp  folder.
 ***Note:*** If you use another operating system such as macOS, Linux, or Unix, please feel free to unzip it to any directory you like.
 **Step 3:** Connect to the MySQL server using the mysql client program. The mysql program is located in the bin directory of the MySQL installation folder.
 
-`> mysql -u root -p`
-`Enter password: ********`
+```
+> mysql -u root -p
+Enter password: ********
+```
 
 You will need to enter the password for the root user account to log in.
 
@@ -83,6 +91,7 @@ You will need to enter the password for the root user account to log in.
 `mysql> show databases;`
 
 The output will look like the following that includes the newly created classicmodels database:
+
 ```
 +--------------------+
 | Database           |
@@ -127,14 +136,15 @@ mysql> exit
 Bye
 ```
 
+---
 
 # Table of Content (Index):
 
 | Content | URL |
 | :---: | :---: |
-| **Database** | [Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Database/README.md) |
-| **Select** | [Select command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Select/README.md) |
-| **Insert** | [Insert command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Insert/README.md) |
-| **Update** | [Update command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Update/README.md) |
-| **Delete** | [Delete command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Delete/README.md) |
+| **Database** | [Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Database/README.md) |
+| **Select** | [Select command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md) |
+| **Insert** | [Insert command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) |
+| **Update** | [Update command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Update/README.md) |
+| **Delete** | [Delete command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) |
 

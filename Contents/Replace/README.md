@@ -2,12 +2,12 @@
 
 The MySQL REPLACE statement is an extension to the SQL Standard. The MySQL REPLACE statement works as follows:
 
-**Step 1.** [Insert a new row]() into the table, if a duplicate key error occurs.
+**Step 1.** [Insert a new row](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) into the table, if a duplicate key error occurs.
 
 **Step 2.** If the insertion fails due to a duplicate-key error occurs:
 
-    - [Delete]() the conflicting row that causes the duplicate key error from the table.
-    - [Insert]() the new row into the table again.
+    - [Delete](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) the conflicting row that causes the duplicate key error from the table.
+    - [Insert](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) the new row into the table again.
 
 To determine whether the new row that already exists in the table, MySQL uses PRIMARY KEY or UNIQUE KEY index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
 
@@ -15,7 +15,7 @@ To use the REPLACE statement, you need to have at least both INSERT and DELETE p
 
 ---
 
-### Using MySQL REPLACE to [insert a new row]()
+### Using MySQL REPLACE to [insert a new row](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md)
 
 The following illustrates the syntax of the REPLACE statement:
 
@@ -72,7 +72,7 @@ The value in the name column is NULL now. The REPLACE statement works as follows
 
 ---
 
-### Using MySQL REPLACE statement to [update a row]()
+### Using MySQL REPLACE statement to [update a row](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Update/README.md)
 
 The following illustrates how to use the REPLACE statement to update data:
 
@@ -99,7 +99,7 @@ Unlike the UPDATE statement, if you don’t specify the value for the column in 
 
 ---
 
-### Using MySQL REPLACE to insert data from a SELECT statement
+### Using MySQL REPLACE to insert data from a [SELECT statement](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md)
 
 The following illustrates the REPLACE statement that inserts data into a table with the data come from a query.
 

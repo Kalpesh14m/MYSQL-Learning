@@ -147,4 +147,4 @@ Bye
 | **Insert** | [Insert Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) |
 | **Update** | [Update Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Update/README.md) |
 | **Delete** | [Delete Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) |
-| **Replace** |[Replace Command]https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Replace/README.md)|
+| **Replace** |[Replace Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Replace/README.md)|

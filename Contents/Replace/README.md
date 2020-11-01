@@ -9,7 +9,7 @@ The MySQL REPLACE statement is an extension to the SQL Standard. The MySQL REPLA
     - [Delete](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) the conflicting row that causes the duplicate key error from the table.
     - [Insert](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) the new row into the table again.
 
-To determine whether the new row that already exists in the table, MySQL uses PRIMARY KEY or UNIQUE KEY index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
+To determine whether the new row that already exists in the table, MySQL uses [PRIMARY KEY]() or [UNIQUE KEY]() index. If the table does not have one of these indexes, the REPLACE works like an INSERT statement.
 
 To use the REPLACE statement, you need to have at least both INSERT and DELETE privileges for the table.
 
@@ -59,6 +59,7 @@ VALUES('New York',8008278),
 REPLACE INTO cities(id,population)
 VALUES(2,3696820);
 ```
+
 **Finally,** query the data of the cities table again to verify the replacement.
 
 `SELECT * FROM cities;`

@@ -142,9 +142,9 @@ Bye
 
 | Content | URL |
 | :---: | :---: |
-| **Database** | [Database command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Database/README.md) |
-| **Select** | [Select command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md) |
-| **Insert** | [Insert command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) |
-| **Update** | [Update command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Update/README.md) |
-| **Delete** | [Delete command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) |
-
+| **Database** | [Database Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Database/README.md) |
+| **Select** | [Select Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Select/README.md) |
+| **Insert** | [Insert Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Insert/README.md) |
+| **Update** | [Update Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Update/README.md) |
+| **Delete** | [Delete Command](https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Delete/README.md) |
+| **Replace** |[Replace Command]https://github.com/Kalpesh14m/MYSQL-Learning/blob/main/Contents/Replace/README.md)|
